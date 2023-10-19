@@ -32,12 +32,4 @@ public class RandomSoundTrigger : MonoBehaviour
             PlayRandomSound();
         }
     }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            PlayRandomSound();
-        }
-    }
 }
