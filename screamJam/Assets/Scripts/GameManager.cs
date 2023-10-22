@@ -9,9 +9,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject menuCanvas;
     [SerializeField] private GameObject menuAboutTeam;
     private GameObject controlObject;
+    private FirstPersonController _firstPersonController;
     [SerializeField] private GameObject finishMenu;
+    [SerializeField] private AudioSource runningSound;
     public bool isGameStarted = false;
-
+    private bool startSprint = false;
+    private float sprintTime = 0f;
+    public float sprintTimeMax = 2.5f;
     private bool isMenuActive = false;
 
     private void Start()
@@ -21,6 +25,7 @@ public class GameManager : MonoBehaviour
         menuAboutTeam.SetActive(false);
         startCanvas.SetActive(true);
         controlObject = GameObject.FindGameObjectWithTag("Player");
+        _firstPersonController = controlObject.GetComponent<FirstPersonController>();
         ChangeGameState(startCanvas, true);
     }
 
@@ -30,7 +35,7 @@ public class GameManager : MonoBehaviour
         UI.SetActive(state);
         if (controlObject != null)
         {
-            controlObject.GetComponent<FirstPersonController>().enabled = !state;
+            _firstPersonController.enabled = !state;
         }
         if (state)
         {
@@ -46,9 +51,28 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (!isGameStarted) return;
+        if (_firstPersonController.isSprinting)
+        {
+            if (!startSprint)
+            {
+                runningSound.Play();
+                startSprint = true;
+            }
+        }
+        else
+        {
+            if (startSprint)
+            {
+                if( _firstPersonController.sprintDuration - _firstPersonController.sprintRemaining < sprintTimeMax)
+                    runningSound.Stop();
+                startSprint = false;
+            }
+        }
+        
+        
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (!isGameStarted) return;
             if (isMenuActive)
             {
                 ChangeGameState(menuCanvas, false);
