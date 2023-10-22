@@ -131,6 +131,8 @@ public class FirstPersonController : MonoBehaviour
 
     #endregion
 
+    private GameManager _gameManager;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -151,6 +153,8 @@ public class FirstPersonController : MonoBehaviour
 
     void Start()
     {
+        _gameManager = GameManager.FindObjectOfType<GameManager>();
+        
         if(lockCursor)
         {
             Cursor.lockState = CursorLockMode.Locked;
