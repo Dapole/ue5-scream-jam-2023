@@ -9162,6 +9162,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FirstPersonController
       objectReference: {fileID: 0}
+    - target: {fileID: 6140705284872361138, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: m_Range
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4459864851310106427, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
     m_RemovedGameObjects: []
@@ -9170,6 +9174,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4459864851310106424, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       insertIndex: -1
       addedObject: {fileID: 651230168}
+    - targetCorrespondingSourceObject: {fileID: 6643667898557870142, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 892935301}
   m_SourcePrefab: {fileID: 100100000, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
 --- !u!1 &651230167 stripped
 GameObject:
@@ -12437,6 +12444,29 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 059c81de61f2d4e4cbe522492d0181da, type: 3}
+--- !u!1 &892935298 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6643667898557870142, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+  m_PrefabInstance: {fileID: 651230166}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &892935301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 892935298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a4dcb372f7646240ade77a93db9012e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIToActivate: {fileID: 240892345877767764}
+  decreaseRadiusRate: 3
+  decreaseIntensityRate: 0.5
+  minLightRange: 10
+  invokingAfterTime: 1
+  durationBetweenInvoking: 1
 --- !u!4 &900726732 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400008, guid: 6b9fd6eae9eb0d546ae14cdaee6d1156, type: 3}

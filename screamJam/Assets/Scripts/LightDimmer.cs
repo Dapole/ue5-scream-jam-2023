@@ -1,32 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.GlobalIllumination;
+using UnityEngine.Serialization;
 
 public class LightDimmer : MonoBehaviour
 {
-    [SerializeField] private PointLight targetLight;
-    [SerializeField] private float initialRange;
-    [SerializeField] private float timer;
-    [SerializeField] private float decreaseRate = 1f;
-
+    private Light targetLight;
+    [SerializeField] private GameObject UIToActivate;
+    
+   public float decreaseRadiusRate = 1f;
+   public float decreaseIntensityRate = 0.1f;
+   public float minLightRange = 10f;
+   public float invokingAfterTime = 10f;
+   public int durationBetweenInvoking = 10;
+    
     private void Start()
     {
-        targetLight = GetComponent<PointLight>();
-        initialRange = targetLight.range;
-        timer = 0f;
-        InvokeRepeating("DecreaseLight", 10f, 10f);
+        targetLight = GetComponent<Light>();
+        InvokeRepeating("DecreaseLight", invokingAfterTime, durationBetweenInvoking);
     }
 
     private void DecreaseLight()
     {
-        if (targetLight.range > 10f)
+        if (targetLight.range > minLightRange)
         {
-            targetLight.range -= decreaseRate;
+            targetLight.range -= decreaseRadiusRate;
         }
         else
         {
-            targetLight.range = 10f;
+            targetLight.intensity -= decreaseIntensityRate;
+        }
+        if (targetLight.intensity <= 0)
+        {
+            FindObjectOfType<GameManager>().ChangeGameState(UIToActivate, true);
+            CancelInvoke("DecreaseLight");
         }
     }
 }

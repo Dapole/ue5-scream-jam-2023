@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject startCanvas;
     [SerializeField] private GameObject menuCanvas;
     [SerializeField] private GameObject menuAboutTeam;
+    
     private GameObject controlObject;
     private FirstPersonController _firstPersonController;
     [SerializeField] private GameObject finishMenu;
@@ -29,7 +30,7 @@ public class GameManager : MonoBehaviour
         ChangeGameState(startCanvas, true);
     }
 
-    private void ChangeGameState(GameObject UI, bool state)
+    public void ChangeGameState(GameObject UI, bool state)
     {
         isMenuActive = state;
         UI.SetActive(state);
