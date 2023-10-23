@@ -313,6 +313,8 @@ MonoBehaviour:
   sprintBar: {fileID: 4459864850888339820}
   sprintBarWidthPercent: 0.3
   sprintBarHeightPercent: 0.02
+  isSprinting: 0
+  sprintRemaining: 0
   enableJump: 1
   jumpKey: 32
   jumpPower: 5
@@ -543,7 +545,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4459864851310106429}
   - component: {fileID: 4459864851310106426}
-  - component: {fileID: 4459864851310106427}
   m_Layer: 0
   m_Name: PlayerCamera
   m_TagString: MainCamera
@@ -618,14 +619,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &4459864851310106427
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4459864851310106424}
-  m_Enabled: 1
 --- !u!1 &4459864851397454630
 GameObject:
   m_ObjectHideFlags: 0
